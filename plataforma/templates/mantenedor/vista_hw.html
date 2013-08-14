@@ -1,0 +1,115 @@
+{%extends 'basehome.html' %}
+
+{% block title %}
+	Mantenedor HW
+{% endblock title %}
+{% block content %}
+
+	<div  class="row ">
+
+		<article id="monitor" class="span12 ">
+		<h4 class="text-info">Tabla Monitores <a href="#nuevoMonitor" role="button" class="btn btn-success pull-right" data-toggle="modal"><i class="icon-plus icon-white"></i> Agregar</a></h4>
+		
+						<div id="nuevoMonitor" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Agregar Monitor</h3>
+  </div>
+  <div class="modal-body">
+    <iframe src="{% url "nuevoMonitor" %}" width="1000" height="800">Texto para cuando el navegador no conoce la etiqueta iframe</iframe>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Guardar</button>
+  </div>
+</div>
+		<hr>
+		<table class="table  table-hover table-condensed table-bordered fondo">
+			<thead>
+				<tr class=" text-success ">
+					<th>TIPO PANTALLA</th>
+					<th>TAM. PANTALLA</th>
+					<th>MARCA</th>
+					<th>MODELO</th>
+					<th>TIPO Cx</th>
+					<th>FECHA ING.</th>
+					<th>NUM. SERIE</th>
+					<th>ESTADO</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for monitor in monitor %}
+				<tr>
+					<td><p>{{monitor.tipo_pantalla}}</p></td>
+					<td><p>{{monitor.tam_pantall}}</p></td>
+					<td><p>{{monitor.marca}}</p></td>
+					<td><p>{{monitor.modelo}}</p></td>
+					<td><p>{{monitor.tipo_conexion}}</p></td>
+					<td><p>{{monitor.fecha_ingreso}}</p></td>
+					<td><p>{{monitor.num_serie}}</p></td>
+					<td><p>{{monitor.estado}}</p></td>
+					
+					<td><a href="#{{monitor.id}}" role="button" class="btn btn-primary" data-toggle="modal"><i class="icon-plus icon-white"></i>Ver</a>
+						<div id="{{monitor.id}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>Modal Monitor---{{monitor.id}} </p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>
+
+
+					</td>
+					<td><a href="#{{monitor.id}}" role="button" class="btn btn-warning" data-toggle="modal"><i class="icon-remove icon-white"></i></a></td>
+				</tr>
+					{% empty %}
+					<tr><p>No hay monitores</p></tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		</article>
+		<br>
+		<article  id="mouse" class="span12">
+			<h4>Tabla Mouse</h4>
+		<hr>
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>modelo</th>
+						<th>marca</th>
+						<th>serie</th>
+						<th>tipo Cx</th>
+						<th>Fecha ingreso</th>
+						<th>Status</th>
+						
+					</tr>
+				<tbody>
+					{% for mouse in mouse %}
+					<tr>
+						<td>{{mouse.modelo}}</td>
+						<td>{{mouse.marca}}</td>
+						<td>{{mouse.serie}}</td>
+						<td>{{mouse.tipo_conexion}}</td>
+						<td>{{mouse.fecha_ingreso}}</td>
+						<td>{{mouse.status}}</td>
+						
+					</tr>
+					{% empty %}
+					<tr><p>No hay mouse</p></tr>
+				{% endfor %}
+				</tbody>
+				</thead>
+			</table>
+		</article>
+		{# modal monitor #}
+		</div>
+	
+
+{% endblock content %}

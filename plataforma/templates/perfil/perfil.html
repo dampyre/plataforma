@@ -1,0 +1,25 @@
+{%extends 'basehome.html' %}
+{% block title %}
+	Perfil
+{% endblock title %}
+{% block content %}
+ <div class="row-fluid">
+ 	<div class="span12">
+ 		{% for perfil in perfil  %}
+ 		<article class="span3 text-center well">
+ 			<p class ="text-info text-left">{{perfil.nick}}</p>
+ 			<hr>
+ 			<img src="/media/{{perfil.imagen}}" width ="100px" heigth = "100px" class="img-rounded">
+ 			<p>{{perfil.nombre}} {{perfil.apellido}} id:{{perfil.id}}</p>
+ 			<hr>
+ 			<a href="/mantenedor/{{perfil.id}}/" class="btn btn-primary"> ver perfil </a>
+ 			{% empty %}
+ 				<p class="label label-warning"> No hay perfiles</p>
+ 		</article>
+ 		{% endfor %}
+ 		
+ 	</div>
+ 	
+ </div>
+
+{% endblock content %}

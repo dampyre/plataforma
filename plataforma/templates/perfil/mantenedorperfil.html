@@ -1,0 +1,8 @@
+{%extends 'basehome.html' %}
+
+{% block content %}
+<h3>{{perfil.nick}}	</h3>
+<img src="/media/{{perfil.imagen}}" width ="100px" heigth = "100px" class="img-rounded" alt="">
+<p>{{perfil.nombre}}</p><br>
+<p>{{perfil.apellido}}</p>
+{% endblock content %}

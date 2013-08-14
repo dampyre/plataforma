@@ -1,0 +1,32 @@
+{%extends 'baselogin.html' %}
+{% block title %}
+	REGISTRO
+{% endblock title %}
+
+{% block content %}
+<div class="login">
+	<div class="login-screen">
+		<div class="login-icon">
+			<h4>
+				Bienvenido a
+				<small>Gestion informatica</small>
+			</h4>
+		</div>
+		<div class="login-form">
+			<div class="control-group">
+
+				<div class="control-group">
+
+					<form action="." method="POST" >
+						{% csrf_token%}
+						{{ mensaje }}
+						{{ form.as_p}}
+						<input  class="btn btn-danger btn-block btn-large "type="submit"value="Login">		
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+{% endblock content %}

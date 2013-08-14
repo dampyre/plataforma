@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="/media/css/bootstrap.css">
+    <!--{# <link rel="stylesheet" type="text/css" href="/media/css/flat-ui.css"> #}-->
+    <link rel="stylesheet" href="/media/css/prettiffy.css">
+    <link rel="stylesheet" type="text/css" href="/media/css/estilo.css">
+
+{% block content %}
+  <div class="row">
+      <div class="span10 well">
+      	<form method="POST">
+          <fieldset>
+            <legend>
+              Formulario Agrega Monitor
+            </legend>
+           {% csrf_token %}
+           <!--primera forma para personalizar los formulario relizados con model form 
+           se obtiene un control medio en caso de personalizar--> 
+          
+                   
+              <div class="text text-error ">{{field.errors}}</div>
+             {{field.label_tag}} {{field}}
+             {{ formulario.as_p }} 
+              
+          </fieldset>
+          <input type="submit" value ="Agregar"class="btn btn-primary" >
+              <a href="{% url "vista_hw" %}" class="btn">Regresar</a>
+        </form>
+      </div>
+  </div>
+{% endblock content %}
